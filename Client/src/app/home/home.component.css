@@ -1,8 +1,16 @@
-.article-listing-card {
-    max-width: 400px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+.article-listing-card--wrapper {
+    max-width: 25rem;
+    margin: 1rem;
+}
+
+.example-header-image {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
     background-size: cover;
-  }
+}
+
+.article-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
