@@ -23,7 +23,7 @@ export class AppComponent {
   }
 
   login() {
-    this.oktaAuth.loginRedirect('/messages');
+    this.oktaAuth.loginRedirect();
   }
 
   logout() {

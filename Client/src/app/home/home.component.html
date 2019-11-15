@@ -5,18 +5,18 @@
 			<mat-card-header>
 				<div mat-card-avatar class="example-header-image"></div>
 				<mat-card-title  >{{ article.title }}</mat-card-title> <!--This will be a link to the article-->
-				<mat-card-subtitle>{{ article.author }}</mat-card-subtitle> <!--This will be a link to the author -->
+				<mat-card-subtitle>Done by {{ article.authorId }}</mat-card-subtitle> <!--This will be a link to the author -->
 			</mat-card-header>
-			 <img mat-card-image src="{{article.image}}"
-				alt="Photo of a Shiba Inu" /><!-- This will be a link to the article -->
+			 <img mat-card-image src="./../../assets/img/default-image.jpg"
+				alt="default-image" /><!-- This will be a link to the article -->
 			<mat-card-content>
 				<p>
-					{{ article.contentPreview }}<!--This will be a link to the article-->
+					{{ article.content }}<!--This will be a link to the article-->
 				</p>
 			</mat-card-content>
 			<mat-card-actions>
 				<button mat-button>LIKE</button>
-				<button mat-button>SHARE</button>
+				<button mat-button>VIEW</button>
 			</mat-card-actions>
 		</mat-card>
 	</div>

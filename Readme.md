@@ -6,5 +6,5 @@ This is a project for my Object Oriented Design class.
 - [ ] add solution file
 - [ ] create a project for testing
 - [ ] GCP
-- [ ] Completelyseperate project for data layer
+- [ ] Completely separate project for data layer
 

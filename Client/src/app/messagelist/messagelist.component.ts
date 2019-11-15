@@ -20,14 +20,15 @@ export class MessageListComponent implements OnInit{
   }
 
   async ngOnInit() {
+    console.log(this.oktaAuth.getUser())
     const accessToken = await this.oktaAuth.getAccessToken();
-    console.log(accessToken)
+  
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
     // Make request
      this.http.get<Message[]>(
-      'https://localhost:5001/WeatherForecast',
+      'https://localhost:5001/article',
       {headers}
     ).subscribe(result =>{
       this.messages = result

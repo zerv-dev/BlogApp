@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient,HttpHeaders} from '@angular/common/http'
+import { OktaAuthService } from '@okta/okta-angular';
 import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
 interface ArticleListing {
 	title: String;
@@ -6,6 +8,13 @@ interface ArticleListing {
 	date: String;
 	contentPreview: String,
 	image:String
+}
+
+interface Article{
+	id:Number;
+    title: String;
+	authorId:Number;
+	content:String
 }
 @Component({
 	selector: 'app-home',
@@ -15,30 +24,24 @@ interface ArticleListing {
 
 
 export class HomeComponent implements OnInit {
-	articles: Array<ArticleListing>;
+	articles: Array<Article>;
 
-	constructor() {
+	constructor(private http: HttpClient, private oktaAuth: OktaAuthService) {
 
-		this.articles = [
-			{
-				title: 'hello',
-				author: 'zane ervin',
-				date: '12/12/2019',
-				contentPreview: 'hello my name is zane and this is my article',
-				image:'./../../assets/img/hello.jpg'
-			},
-			{
-				title: 'How to make an api',
-				author: 'zane ervin',
-				date: '12/12/2019',
-				contentPreview: 'nah dont do this coding is boring',
-				image:'./../../assets/img/What-is-an-API.png'
-
-			}
-		]
+		this.articles =[]
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
+		const accessToken = await this.oktaAuth.getAccessToken();
+		const headers = new HttpHeaders({
+			Authorization: 'Bearer ' + accessToken
+		  });
+		this.http.get<Article[]>(
+			'https://localhost:5001/api/article/',
+			{headers}
+		  ).subscribe(result =>{
+			this.articles = result
+		  })
 	}
 
 }
