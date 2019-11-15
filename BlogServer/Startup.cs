@@ -11,6 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Okta.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
+using BlogServer.Repositories;
+using BlogServer.Data;
 
 
 namespace BlogServer
@@ -45,6 +50,10 @@ namespace BlogServer
 {
     OktaDomain = "https://dev-395608.okta.com"
 });
+             string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=comp586;Trusted_Connection=true;MultipleActiveResultSets = true";//Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddControllers();
         }
