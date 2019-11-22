@@ -1,24 +1,7 @@
 <div layout="row " layout-align="start start" class="article-list">
 	<h1>Home page</h1>
 	<div class="article-listing-card--wrapper" *ngFor="let article of articles">
-		<mat-card  >
-			<mat-card-header>
-				<div mat-card-avatar class="example-header-image"></div>
-				<mat-card-title  >{{ article.title }}</mat-card-title> <!--This will be a link to the article-->
-				<mat-card-subtitle>Done by {{ article.authorId }}</mat-card-subtitle> <!--This will be a link to the author -->
-			</mat-card-header>
-			 <img mat-card-image src="./../../assets/img/default-image.jpg"
-				alt="default-image" /><!-- This will be a link to the article -->
-			<mat-card-content>
-				<p>
-					{{ article.content }}<!--This will be a link to the article-->
-				</p>
-			</mat-card-content>
-			<mat-card-actions>
-				<button mat-button>LIKE</button>
-				<button mat-button>VIEW</button>
-			</mat-card-actions>
-		</mat-card>
+		<app-article-list-item  [article]="article" ></app-article-list-item>
 	</div>
 	
 </div>
