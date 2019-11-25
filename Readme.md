@@ -7,4 +7,7 @@ This is a project for my Object Oriented Design class.
 - [ ] create a project for testing
 - [ ] GCP
 - [ ] Completely separate project for data layer
+- [ ] Unit testing
+- [ ] Continuous deployment
+- [ ] Continuous integration
 

@@ -15,7 +15,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatSliderModule} from '@angular/material/slider'
 import {MatCardModule} from '@angular/material/card'
 import {MatButtonModule} from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 
 const config = {
@@ -31,11 +39,13 @@ const config = {
     MessageListComponent,
     LoginComponent,
     ArticleComponent,
-    ArticleListItemComponent
+    ArticleListItemComponent,
+    CreateArticleComponent,
+    
   ],
 
 
-  imports: [
+  imports: [  
     BrowserModule,
     AppRoutingModule,
     OktaAuthModule.initAuth(config),
@@ -43,7 +53,14 @@ const config = {
     BrowserAnimationsModule,
     MatSliderModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    FormsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
