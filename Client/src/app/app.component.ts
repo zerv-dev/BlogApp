@@ -20,6 +20,14 @@ export class AppComponent {
   async ngOnInit() {
     // Get the authentication state for immediate use
     this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    console.log("on init is called")
+    if(this.isAuthenticated){
+      let user;
+      await this.oktaAuth.getUser().then(UserClaims=>{
+        user=UserClaims
+      })
+      console.log(user)
+    }
   }
 
   login() {
