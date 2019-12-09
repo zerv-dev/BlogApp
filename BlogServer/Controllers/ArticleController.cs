@@ -22,6 +22,7 @@ namespace BlogServer.Controllers
         }
         
         [HttpPost]
+        [Authorize]
         public Article PostArticle(Article article){
             articleRepo.Insert(article);
 

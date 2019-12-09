@@ -14,6 +14,8 @@ public class DatabaseContext : DbContext
     }
 
     public DbSet<Article> Articles {get;set;}
+
+    public DbSet<User> User { get; set; }
 }
 
 }
