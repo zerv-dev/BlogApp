@@ -24,8 +24,8 @@ Version.cpp
 *.user
 _ReSharper.*/
 *.sdf
-bin
-obj
+[Bb]in/
+[Oo]bj/
 Debug/
 Release/
 *.opensdf
