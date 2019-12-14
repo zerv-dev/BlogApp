@@ -34,7 +34,9 @@ namespace BlogServer.Controllers
         [HttpGet("{Email}")]
         public async Task<ActionResult<User>> GetUser(string Email)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u=>u.Email == Email);            
+
+            if(IsValidEmail(Email)){
+                var user = await _context.Users.SingleOrDefaultAsync(u=>u.Email == Email);            
 
             if (user == null)
             {
@@ -42,8 +44,12 @@ namespace BlogServer.Controllers
             }
 
             return user;
+            }
+            else{
+                return UnprocessableEntity();
+            }
+            
         }
-
         // PUT: api/User/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -108,5 +114,19 @@ namespace BlogServer.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
+
+        public bool IsValidEmail(string email)
+        {
+        try {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch {
+            return false;
+        }
+        }
     }
 }
+
+
+
