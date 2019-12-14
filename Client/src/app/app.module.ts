@@ -10,7 +10,7 @@ import { OktaAuthModule } from "@okta/okta-angular";
 import { LoginComponent } from './login/login.component';
 import { ArticleComponent } from './article/article.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {AuthService} from './auth.service';
 
 import{MatSliderModule} from '@angular/material/slider'
 import {MatCardModule} from '@angular/material/card'
@@ -63,7 +63,7 @@ const config = {
     FormsModule
   
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
