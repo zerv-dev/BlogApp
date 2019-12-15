@@ -31,8 +31,8 @@ namespace BlogServer.Controllers
         }
 
         //GET: api/User/5
-        [HttpGet("{Email}")]
-        public async Task<ActionResult<User>> GetUser(string Email)
+        [HttpGet("Email/{Email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string Email)
         {
 
             if(IsValidEmail(Email)){
@@ -50,6 +50,20 @@ namespace BlogServer.Controllers
             }
             
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+        
         // PUT: api/User/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

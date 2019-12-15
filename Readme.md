@@ -5,9 +5,14 @@ This is a project for my Object Oriented Design class.
 - [ ] repository pattern
 - [ ] add solution file
 - [ ] create a project for testing
-- [ ] GCP
+- [ ] AWS
 - [ ] Completely separate project for data layer
 - [ ] Unit testing
 - [ ] Continuous deployment
 - [ ] Continuous integration
+- [ ] change cors url in okta
+- [ ] change all localhost to aws url
+- [ ] one to many relationship
+- [ ] view models
+- [ ] 
 

@@ -1,52 +1,110 @@
-using Microsoft.AspNetCore.Mvc;
-using BlogServer.Repositories;
-using BlogServer.Models;
+using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using BlogServer.Data;
+using BlogServer.Models;
 
 namespace BlogServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArticleController: Controller
+    public class ArticleController : ControllerBase
     {
-        private IRepository<Article> articleRepo;
-        public ArticleController(IRepository<Article> articleRepo)
+        private readonly DatabaseContext _context;
+
+        public ArticleController(DatabaseContext context)
         {
-            this.articleRepo = articleRepo;
+            _context = context;
         }
 
-        [HttpGet("{id}")]
-        public Article GetArticle(int id){
-            return articleRepo.Get(id);
-        }
-        
-        [HttpPost]
-        [Authorize]
-        public Article PostArticle(Article article){
-            articleRepo.Insert(article);
-
-            return articleRepo.Get(article.Id);
-        }
-
+        // GET: api/Article
         [HttpGet]
-        public IEnumerable<Article> GetAllArticle(){
-            return articleRepo.GetAll();
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
+        {
+            return await _context.Articles.ToListAsync();
         }
 
-        [HttpPut]
-        public Article PutArticle(Article article)
+        // GET: api/Article/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Article>> GetArticle(int id)
         {
-            articleRepo.Update(article);
-            return articleRepo.Get(article.Id);
-        }
+            var article = await _context.Articles.FindAsync(id);
 
-        [HttpDelete("{id}")]
-        public Article DeleteArticle(int id)
-        {
-            Article article = articleRepo.Get(id);
-            articleRepo.Delete(article);
+            if (article == null)
+            {
+                return NotFound();
+            }
+
             return article;
+        }
+
+        // PUT: api/Article/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutArticle(int id, Article article)
+        {
+            if (id != article.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(article).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ArticleExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Article
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<Article>> PostArticle(Article article)
+        {
+            _context.Articles.Add(article);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetArticle", new { id = article.Id }, article);
+        }
+
+        // DELETE: api/Article/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Article>> DeleteArticle(int id)
+        {
+            var article = await _context.Articles.FindAsync(id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            _context.Articles.Remove(article);
+            await _context.SaveChangesAsync();
+
+            return article;
+        }
+
+        private bool ArticleExists(int id)
+        {
+            return _context.Articles.Any(e => e.Id == id);
         }
     }
 }
