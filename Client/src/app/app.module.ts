@@ -41,8 +41,7 @@ const config = {
     LoginComponent,
     ArticleComponent,
     ArticleListItemComponent,
-    CreateArticleComponent,
-    
+    CreateArticleComponent,    
   ],
 
 

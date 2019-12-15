@@ -19,7 +19,7 @@ export class AuthService {
     // console.log(this.isAuthenticated)
     
   }
-  async isAuthenticated() {
+  async isAuthenticated() {    
     // Checks if there is a current accessToken in the TokenManger.
     return await this.oktaAuth.isAuthenticated();
   }
@@ -29,7 +29,7 @@ export class AuthService {
   }
   fetchUser( email:string){
     let error:any;
-      return this.http.get<User>('https://localhost:5001/api/User/'+email).map(result=>{
+      return this.http.get<User>('https://localhost:5001/api/User/Email/'+email).map(result=>{
       this.user = result
       return this.user
     }

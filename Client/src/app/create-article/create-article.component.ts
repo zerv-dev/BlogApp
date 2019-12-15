@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { OktaAuthService } from '@okta/okta-angular';
+import { Router } from '@angular/router';
+import{AuthService} from './../auth.service'
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
@@ -11,19 +13,25 @@ export class CreateArticleComponent implements OnInit {
   content:string;
   subtitle:string;
   authorId:number;
-  constructor(private http:HttpClient) { }
+  user:any;
+  constructor(private http:HttpClient, private oktaAuth:OktaAuthService ,private router:Router, private authService:AuthService) { }
 
   ngOnInit() {
   }
 
-  submit(){
+  async submit(){
+    //pass in header
+    const accessToken = await  this.authService.getAccessToken();  //this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + accessToken
+    });
     this.http.post<any>('https://localhost:5001/api/article',{
-      "title": this.title,
-      "authorId": 1,
-      "content": this.content
-  }).subscribe(
-
-    response=>console.log(response)
+      "Title": this.title,
+      "UserId": this.user.Id,
+      "Content": this.content
+  },{headers}).
+  subscribe(
+    response=>this.router.navigate(['/'])
   )
   }
 
