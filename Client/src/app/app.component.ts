@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
 import {AuthService} from './auth.service';
+import { Router } from '@angular/router';
 interface User{
   Id:number
   Email:string;
@@ -16,11 +17,11 @@ export class AppComponent  {
   isAuthenticated: any;
   userClaims:any
   user:any
-  constructor(public oktaAuth: OktaAuthService, private authService:AuthService) {
+  constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService) {
     // Subscribe to authentication state changes
     console.log('constructor is called')
     this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean)  =>{ this.isAuthenticated = isAuthenticated;}
+      (isAuthenticated: boolean)  =>{ this.isAuthenticated = isAuthenticated;console.log(isAuthenticated)}
 
     );
     // let token = oktaAuth.handleAuthentication();
@@ -30,6 +31,8 @@ export class AppComponent  {
   }
 
   async ngAfterViewInit() {
+    // this.router.navigate(['implicit/callback']);
+
     // Get the authentication state for immediate use
     console.log('ngAfterViewInit')
     this.isAuthenticated = await this.authService.isAuthenticated();

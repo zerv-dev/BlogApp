@@ -24,6 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { CallbackComponent } from './callback/callback.component';
 
 
 const config = {
@@ -41,7 +42,8 @@ const config = {
     LoginComponent,
     ArticleComponent,
     ArticleListItemComponent,
-    CreateArticleComponent,    
+    CreateArticleComponent,
+    CallbackComponent,    
   ],
 
 

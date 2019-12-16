@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 			Authorization: 'Bearer ' + accessToken
 		  });
 		this.http.get<Article[]>(
-			'https://localhost:5001/api/article/',
+			'https://blogserver20191215071216.azurewebsites.net/api/article/',
 			{headers}
 		  ).subscribe(result =>{
 			this.articles = result

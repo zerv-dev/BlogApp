@@ -29,7 +29,7 @@ export class AuthService {
   }
   fetchUser( email:string){
     let error:any;
-      return this.http.get<User>('https://localhost:5001/api/User/Email/'+email).map(result=>{
+      return this.http.get<User>('https://blogserver20191215071216.azurewebsites.net/api/User/Email/'+email).map(result=>{
       this.user = result
       return this.user
     }
@@ -41,7 +41,7 @@ export class AuthService {
     return this.user;
   }
   createUser(email:string,FirstName:string,LastName:string){
-    return this.http.post<User>('https://localhost:5001/api/User',{email,FirstName,LastName}).
+    return this.http.post<User>('https://blogserver20191215071216.azurewebsites.net/api/User',{email,FirstName,LastName}).
     subscribe(user=>this.user=user,error=>console.error(error));
   }
 
