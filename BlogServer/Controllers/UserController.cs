@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BlogServer.Data;
 using BlogServer.Models;
+using BlogServer.ViewModels;
 using System.Security.Claims;
 
 
@@ -48,6 +49,28 @@ namespace BlogServer.Controllers
             else{
                 return UnprocessableEntity();
             }
+            
+        }
+        [HttpGet("{Id}/Profile")]
+        public async Task<ActionResult<ProfileViewModel>> GetUserProfile(int id)
+        {
+            
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var articles = await _context.Articles.Where(article=> article.UserId == id).ToListAsync();
+            ProfileViewModel profile = new ProfileViewModel(){
+                UserId = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Articles = articles
+            };
+
+            return profile;
+
             
         }
 
