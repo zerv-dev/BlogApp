@@ -1,6 +1,6 @@
 <div class="article-page" *ngIf=article>
         <h1>{{article.title}}</h1>
-        <i>By {{article.authorId}}</i>
+        <i>By {{article.author.firstName + article.author.lastName}}</i>
 
         <p>{{article.content}}</p>
 

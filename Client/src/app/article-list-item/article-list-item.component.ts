@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 interface Article{
 	id:Number;
     title: String;
-	authorId:Number;
+	author:any;
 	content:String
 }
 @Component({

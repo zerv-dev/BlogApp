@@ -5,8 +5,8 @@ import { environment } from "./../../environments/environment";
 
 interface Article{
 	id:Number;
-    title: String;
-	authorId:Number;
+  title: String;
+	author:any;
 	content:String
 }
 @Component({

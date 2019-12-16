@@ -1,9 +1,9 @@
-<mat-card>
+<mat-card  *ngIf="article">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title   >  <a [routerLink]="['article/',article.id]">{{ article.title }}</a></mat-card-title>
+        <mat-card-title   >  <a [routerLink]="['article/',article.id]">{{ article.title  }}</a></mat-card-title>
         <!--This will be a link to the article-->
-        <mat-card-subtitle>Done by {{ article.authorId }}</mat-card-subtitle>
+        <mat-card-subtitle>Done by {{ article.author.firstName + article.author.lastName }}</mat-card-subtitle>
         <!--This will be a link to the author -->
     </mat-card-header>
     <img mat-card-image src="./../../assets/img/default-image.jpg" alt="default-image" />
