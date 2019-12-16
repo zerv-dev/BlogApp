@@ -29,7 +29,7 @@ import { CallbackComponent } from './callback/callback.component';
 
 const config = {
   issuer: 'https://dev-395608.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
+  redirectUri: 'https://stupefied-johnson-b7f9ec.netlify.com/implicit/callback',
   clientId: '0oa1qbis5wVnqY3da357',
   pkce: true,
   scopes:['openid','profile','email'],
