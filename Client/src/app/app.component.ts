@@ -40,6 +40,8 @@ this.isAuthenticated = false
   }
 
   async ngAfterViewInit() {
+        this.isAuthenticated = await this.authService.isAuthenticated();
+
     this.handleUser()
     console.log('ngAfterViewInit')
   }
@@ -53,13 +55,13 @@ this.isAuthenticated = false
 
 
   async handleUser(){
-    this.isAuthenticated = await this.authService.isAuthenticated();
     if(this.isAuthenticated){
         console.log('authenticated');
         
       await this.oktaAuth.getUser().then(claims=>{
         this.userClaims = claims
       })
+      console.log(this.userClaims)
       
       this.user = {
             Email:this.userClaims.email,

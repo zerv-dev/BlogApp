@@ -1,0 +1,13 @@
+<mat-card  *ngIf="user">
+    <mat-card-header>
+        <mat-card-title   >  <a [routerLink]="[]">{{ user.firstName + user.lastName  }}</a></mat-card-title>
+        <!--This will be a link to the user-->
+        <!--This will be a link to the author -->
+    </mat-card-header>
+    <!-- This will be a link to the user -->
+    <mat-card-content>
+        <p>
+            {{user.email}}
+        </p>
+    </mat-card-content>
+</mat-card><p>user-list-item works!</p>

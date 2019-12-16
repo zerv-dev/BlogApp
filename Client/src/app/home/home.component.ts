@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from "./../../environments/environment";
+import {UserService} from './../services/user.service';
 interface ArticleListing {
 	title: String;
 	author: String;
@@ -16,6 +17,12 @@ interface Article{
 	authorId:Number;
 	content:String
 }
+interface User{
+	Email:string,
+	FirstName:string;
+	LastName:string
+  
+  }
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -25,10 +32,11 @@ interface Article{
 
 export class HomeComponent implements OnInit {
 	articles: Array<Article>;
-
-	constructor(private http: HttpClient, private oktaAuth: OktaAuthService) {
+	users :Array<User>
+	constructor(private http: HttpClient, private oktaAuth: OktaAuthService, private userService:UserService) {
 
 		this.articles =[]
+		this.users = []
 	}
 
 	async ngOnInit() {
@@ -42,6 +50,8 @@ export class HomeComponent implements OnInit {
 		  ).subscribe(result =>{
 			this.articles = result
 		  })
+		  this.userService.getAllUsers().subscribe((result)=>{this.users = result})
+	
 	}
 
 }

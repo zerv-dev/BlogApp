@@ -1,5 +1,16 @@
 <div layout="row " layout-align="start start" class="article-list">
 	<h1>Home page</h1>
-	<div class="article-listing-card--wrapper" *ngFor="let article of articles">
-		<app-article-list-item  [article]="article" ></app-article-list-item>
-	</div>
+	<mat-tab-group>
+		<mat-tab label="All articles">
+			<div class="article-listing-card--wrapper" *ngFor="let article of articles">
+				<app-article-list-item  [article]="article" ></app-article-list-item>
+			</div> 
+		</mat-tab>
+		<mat-tab label="All users">
+			Clicking on a user's name will show you all their articles
+			<div class="article-listing-card--wrapper" *ngFor="let user of users">
+				<app-user-list-item [user]="user"></app-user-list-item>
+			</div>
+		</mat-tab>
+	  </mat-tab-group>
+</div>

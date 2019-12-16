@@ -18,11 +18,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {  MatTabsModule } from "@angular/material/tabs";
 
 
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
-import {environment} from './../environments/environment'
+import {environment} from './../environments/environment';
+import { UserListItemComponent } from './user-list-item/user-list-item.component';
 
 const config = {
   issuer: 'https://dev-395608.okta.com/oauth2/default',
@@ -37,7 +39,8 @@ const config = {
     HomeComponent,
     ArticleComponent,
     ArticleListItemComponent,
-    CreateArticleComponent,    
+    CreateArticleComponent,
+    UserListItemComponent,    
   ],
 
 
@@ -55,7 +58,8 @@ const config = {
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   
   ],
   providers: [AuthService],
