@@ -11,7 +11,6 @@ namespace BlogServer.Models
         public string Content {get;set;}
         [ForeignKey("UserId")]
         public int UserId {get;set;} 
-        public User User { get;set;}
         
     }
 }

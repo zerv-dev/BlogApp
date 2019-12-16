@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BlogServer.Data;
 using BlogServer.Models;
+using BlogServer.ViewModels;
 
 namespace BlogServer.Controllers
 {
@@ -23,23 +24,43 @@ namespace BlogServer.Controllers
 
         // GET: api/Article
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> GetArticles()
         {
-            return await _context.Articles.ToListAsync();
+            // return await _context.Articles.ToListAsync();
+            List<ArticleViewModel> articleViewModelList = new List<ArticleViewModel>();
+            List<Article> articles =  await _context.Articles.ToListAsync();
+            articles.ForEach(article =>{
+                User user =_context.Users.Find(article.UserId);
+                articleViewModelList.Add( new ArticleViewModel(){
+                        Id=article.Id,
+                        Title=article.Title,
+                        Content=article.Content,
+                        Author=user
+                    });
+                
+            });
+            return articleViewModelList;
+
         }
 
         // GET: api/Article/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Article>> GetArticle(int id)
+        public async Task<ActionResult<ArticleViewModel>> GetArticle(int id)
         {
             var article = await _context.Articles.FindAsync(id);
+            var user = await _context.Users.FindAsync(article.UserId);
 
             if (article == null)
             {
                 return NotFound();
             }
-
-            return article;
+            ArticleViewModel articleViewModel = new ArticleViewModel(){
+                Id=article.Id,
+                Title= article.Title,
+                Content= article.Content,
+                Author=user
+            };
+            return articleViewModel;
         }
 
         // PUT: api/Article/5
