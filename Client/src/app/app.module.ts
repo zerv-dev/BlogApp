@@ -4,13 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { MessageListComponent } from './messagelist/messagelist.component';
 
 import { OktaAuthModule } from "@okta/okta-angular";
-import { LoginComponent } from './login/login.component';
 import { ArticleComponent } from './article/article.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthService} from './auth.service';
+import {AuthService} from './services/auth.service';
 
 import{MatSliderModule} from '@angular/material/slider'
 import {MatCardModule} from '@angular/material/card'
@@ -24,7 +22,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
-import { CallbackComponent } from './callback/callback.component';
 import {environment} from './../environments/environment'
 
 const config = {
@@ -38,12 +35,9 @@ const config = {
   declarations: [
     AppComponent,
     HomeComponent,
-    MessageListComponent,
-    LoginComponent,
     ArticleComponent,
     ArticleListItemComponent,
-    CreateArticleComponent,
-    CallbackComponent,    
+    CreateArticleComponent,    
   ],
 
 

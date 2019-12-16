@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
-import {AuthService} from './auth.service';
+import {AuthService} from './services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from "./../environments/environment";
 interface User{
@@ -15,20 +15,20 @@ interface User{
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
-  isAuthenticated: any;
+  isAuthenticated: boolean;
   userClaims:any
   user:any
   constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService) {
     // Subscribe to authentication state changes
     console.log(environment)
+this.isAuthenticated = false
     console.log('constructor is called')
     this.oktaAuth.$authenticationState.subscribe(
       (isAuthenticated: boolean)  =>{ 
-        this.isAuthenticated = isAuthenticated;console.log(isAuthenticated)
+        this.isAuthenticated = isAuthenticated;
+        console.log('isAuthenticated')
         if(this.isAuthenticated){
-          oktaAuth.getUser().then(result=>{
-            console.log(result)
-          })
+          this.handleUser()
         }
       }
 
@@ -40,10 +40,19 @@ export class AppComponent  {
   }
 
   async ngAfterViewInit() {
-    // this.router.navigate(['implicit/callback']);
-
-    // Get the authentication state for immediate use
+    this.handleUser()
     console.log('ngAfterViewInit')
+  }
+  login() {
+    this.oktaAuth.loginRedirect();
+  }
+
+  logout() {
+    this.oktaAuth.logout('/');
+  }
+
+
+  async handleUser(){
     this.isAuthenticated = await this.authService.isAuthenticated();
     if(this.isAuthenticated){
         console.log('authenticated');
@@ -67,13 +76,5 @@ export class AppComponent  {
         }
       })
     }
-
-  }
-  login() {
-    this.oktaAuth.loginRedirect();
-  }
-
-  logout() {
-    this.oktaAuth.logout('/');
   }
 }

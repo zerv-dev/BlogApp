@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
 import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http'
-import { catchError, map, tap } from 'rxjs/operators';
-import {environment} from './../environments/environment'
+import { map } from 'rxjs/operators';
+import {environment} from '../../environments/environment'
 
 interface User{
   Email:string,
@@ -30,11 +30,11 @@ export class AuthService {
   }
   fetchUser( email:string){
     let error:any;
-      return this.http.get<User>(environment.apiUrl+'User/Email/'+email).map(result=>{
+      return this.http.get<User>(environment.apiUrl+'User/Email/'+email).pipe( map(result=>{
       this.user = result
       return this.user
     }
-    )
+    ))
 
   }
 

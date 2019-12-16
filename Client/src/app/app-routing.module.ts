@@ -3,10 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { OktaCallbackComponent, OktaAuthGuard } from "@okta/okta-angular";
 
 import { HomeComponent } from './home/home.component'
-import { MessageListComponent } from "./messagelist/messagelist.component";
 import { ArticleComponent } from './article/article.component'
 
-import { LoginComponent } from './login/login.component'
 import { CreateArticleComponent } from './create-article/create-article.component';
 const routes: Routes = [{
 	path: 'implicit/callback',
@@ -15,15 +13,6 @@ const routes: Routes = [{
 {
 	path: '',
 	component: HomeComponent
-},
-{
-	path: 'messages',
-	component: MessageListComponent,
-	canActivate: [OktaAuthGuard]
-},
-{
-	path: 'login',
-	component: LoginComponent
 },
 {
 	path: 'article/:id',

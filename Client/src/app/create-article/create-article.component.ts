@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { OktaAuthService } from '@okta/okta-angular';
 import { Router } from '@angular/router';
-import{AuthService} from './../auth.service'
+import{AuthService} from '../services/auth.service'
 import { environment } from "./../../environments/environment";
 
 @Component({
