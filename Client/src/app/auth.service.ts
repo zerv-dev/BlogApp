@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
 import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http'
 import { catchError, map, tap } from 'rxjs/operators';
+import {environment} from './../environments/environment'
 
 interface User{
   Email:string,
@@ -29,7 +30,7 @@ export class AuthService {
   }
   fetchUser( email:string){
     let error:any;
-      return this.http.get<User>('https://blogserver20191215071216.azurewebsites.net/api/User/Email/'+email).map(result=>{
+      return this.http.get<User>(environment.apiUrl+'User/Email/'+email).map(result=>{
       this.user = result
       return this.user
     }
@@ -41,7 +42,7 @@ export class AuthService {
     return this.user;
   }
   createUser(email:string,FirstName:string,LastName:string){
-    return this.http.post<User>('https://blogserver20191215071216.azurewebsites.net/api/User',{email,FirstName,LastName}).
+    return this.http.post<User>(environment.apiUrl+'User',{email,FirstName,LastName}).
     subscribe(user=>this.user=user,error=>console.error(error));
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import { OktaAuthService } from '@okta/okta-angular';
-import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
+import { environment } from "./../../environments/environment";
 interface ArticleListing {
 	title: String;
 	author: String;
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 			Authorization: 'Bearer ' + accessToken
 		  });
 		this.http.get<Article[]>(
-			'https://blogserver20191215071216.azurewebsites.net/api/article/',
+			environment.apiUrl+ 'article/',
 			{headers}
 		  ).subscribe(result =>{
 			this.articles = result

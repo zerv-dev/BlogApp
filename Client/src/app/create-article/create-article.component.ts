@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { OktaAuthService } from '@okta/okta-angular';
 import { Router } from '@angular/router';
 import{AuthService} from './../auth.service'
+import { environment } from "./../../environments/environment";
+
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
@@ -25,9 +27,10 @@ export class CreateArticleComponent implements OnInit {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
-    this.http.post<any>('https://localhost:5001/api/article',{
+    this.user = this.authService.user;
+    this.http.post<any>(environment.apiUrl+'article',{
       "Title": this.title,
-      "UserId": this.user.Id,
+      "UserId": this.user.id,
       "Content": this.content
   },{headers}).
   subscribe(

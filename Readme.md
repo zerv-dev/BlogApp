@@ -3,16 +3,16 @@ This is a project for my Object Oriented Design class.
 
  Things I need to finish in order to get a good grade on this assignment
 - [ ] repository pattern
-- [ ] add solution file
+- [x] add solution file
 - [ ] create a project for testing
-- [ ] AWS
+- [ ] Azure
 - [ ] Completely separate project for data layer
 - [ ] Unit testing
 - [ ] Continuous deployment
 - [ ] Continuous integration
-- [ ] change cors url in okta
-- [ ] change all localhost to aws url
-- [ ] one to many relationship
+- [x] change cors url in okta
+- [x] change all localhost to api url
+- [x] one to many relationship(kinda done)
 - [ ] view models
 - [ ] 
 

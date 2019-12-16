@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
 import {AuthService} from './auth.service';
 import { Router } from '@angular/router';
+import { environment } from "./../environments/environment";
 interface User{
   Id:number
   Email:string;
@@ -19,9 +20,17 @@ export class AppComponent  {
   user:any
   constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService) {
     // Subscribe to authentication state changes
+    console.log(environment)
     console.log('constructor is called')
     this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean)  =>{ this.isAuthenticated = isAuthenticated;console.log(isAuthenticated)}
+      (isAuthenticated: boolean)  =>{ 
+        this.isAuthenticated = isAuthenticated;console.log(isAuthenticated)
+        if(this.isAuthenticated){
+          oktaAuth.getUser().then(result=>{
+            console.log(result)
+          })
+        }
+      }
 
     );
     // let token = oktaAuth.handleAuthentication();

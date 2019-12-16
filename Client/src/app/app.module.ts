@@ -25,12 +25,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { CallbackComponent } from './callback/callback.component';
-
+import {environment} from './../environments/environment'
 
 const config = {
   issuer: 'https://dev-395608.okta.com/oauth2/default',
-  redirectUri: 'https://stupefied-johnson-b7f9ec.netlify.com/implicit/callback',
-  clientId: '0oa1qbis5wVnqY3da357',
+  redirectUri: environment.clientUrl+'implicit/callback',
+  clientId: environment.oktaClientId,
   pkce: true,
   scopes:['openid','profile','email'],
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute} from "@angular/router";
 import {HttpClient } from "@angular/common/http";
+import { environment } from "./../../environments/environment";
+
 interface Article{
 	id:Number;
     title: String;
@@ -20,7 +22,7 @@ export class ArticleComponent implements OnInit {
     article:Article;
     ngOnInit() {
       this.route.params.subscribe(params=> this.id= params.id);
-      this.http.get<Article>('https://localhost:5001/api/article/'+ this.id).subscribe(
+      this.http.get<Article>(environment.apiUrl+'article/'+ this.id).subscribe(
         result=>{
           this.article =  result;
         }
