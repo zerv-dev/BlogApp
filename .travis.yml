@@ -1,6 +1,6 @@
 language: csharp
 mono: none
-dotnet: 3.0
+dotnet: 3.0.1
 dist: trusty
 install:
 - dotnet restore
