@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component'
 import { ArticleComponent } from './article/article.component'
 import { CreateArticleComponent } from './create-article/create-article.component';
 import {  ProfileComponent} from "./profile/profile.component";
+import {EditArticleComponent} from './edit-article/edit-article.component'
+import { ConfirmDeleteComponent } from './services/confirm-delete/confirm-delete.component';
 
 const routes: Routes = [{
 	path: 'implicit/callback',
@@ -26,7 +28,17 @@ const routes: Routes = [{
 {
 	path:'profile/:id',
 	component:ProfileComponent
-}
+},
+{
+	path:'edit-article/:id',
+	component:EditArticleComponent,
+	canActivate:[OktaAuthGuard]
+},
+{
+	path:'confirm-delete/:id',
+	component:ConfirmDeleteComponent,
+	canActivate:[OktaAuthGuard]
+},
 
 ];
 

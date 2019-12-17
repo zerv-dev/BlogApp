@@ -6,7 +6,7 @@ export interface User{
   }
 
 export interface Article{
-	id:Number;
+	id:number;
     title: String;
 	author:User;
     content:String,

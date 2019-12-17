@@ -1,4 +1,9 @@
 <mat-card  *ngIf="article" class="article-list-item">
+    <div *ngIf="userService.user && article.author.id == userService.user.id">
+        <button (click) ="deleteArticle()" ><mat-icon>delete</mat-icon></button>
+        <button (click)="router.navigateByUrl('/edit-article/'+article.id)"><mat-icon>edit</mat-icon></button>
+    </div>
+
     <mat-card-header>
         <!--<div mat-card-avatar class="example-header-image"></div> --> 
         <mat-card-title   >  <a (click)="router.navigateByUrl('/article/'+article.id)" >{{ article.title  }}</a>   </mat-card-title>

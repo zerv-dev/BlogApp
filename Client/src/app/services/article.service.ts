@@ -29,4 +29,27 @@ export class ArticleService {
       "Content": content
   },{headers})
   }
+  async editArticle(userId:number,article:Article,){
+    const accessToken =   await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + accessToken
+    });
+   return this.http.put<Article>(environment.apiUrl+'article/'+ article.id,{
+      "Title": article.title,
+      "UserId": userId,
+      "Content": article.content,
+        "Id":article.id
+
+  },{headers})
+  }
+
+  async deleteArticle(id:number){
+    const accessToken =   await this.oktaAuth.getAccessToken();
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + accessToken
+    });
+   return this.http.delete<Article>(environment.apiUrl+'article/'+ id,{headers})
+  }
+  
+
 }

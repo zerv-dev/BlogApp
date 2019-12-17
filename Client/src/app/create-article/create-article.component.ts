@@ -17,7 +17,7 @@ export class CreateArticleComponent implements OnInit {
   title:string;
   content:string;
   user:any;
-  constructor(private http:HttpClient, private oktaAuth:OktaAuthService ,private router:Router, private articleService:ArticleService, private authService:AuthService,private userService:UserService) { }
+  constructor(private http:HttpClient, private oktaAuth:OktaAuthService ,private router:Router, private articleService:ArticleService, private userService:UserService) { }
 
   ngOnInit() {
   }
