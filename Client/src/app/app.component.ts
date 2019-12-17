@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from "@okta/okta-angular";
 import {AuthService} from './services/auth.service';
+import {UserService} from './services/user.service';
+
 import { Router } from '@angular/router';
 import { environment } from "./../environments/environment";
 import {User} from './interfaces'
@@ -13,7 +15,7 @@ export class AppComponent  {
   isAuthenticated: boolean;
   userClaims:any
   user:any
-  constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService) {
+  constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService,private userService:UserService) {
     // Subscribe to authentication state changes
     console.log(environment)
 this.isAuthenticated = false
@@ -45,6 +47,7 @@ this.isAuthenticated = false
   }
 
   logout() {
+    this.userService.resetUser()// = null
     this.oktaAuth.logout('/');
   }
 
@@ -64,12 +67,12 @@ this.isAuthenticated = false
             LastName:this.userClaims.family_name
       } 
       //Checks if user with this email exists
-      this.authService.fetchUser(this.user.Email).
+      this.userService.fetchUser(this.user.Email).
       subscribe(result=>console.log(result),
       //if the user doesn't exist we will create the user
       error=>{
         if(error.status == 404){
-          this.authService.createUser(this.user.Email,this.user.FirstName,this.user.LastName)
+          this.userService.createUser(this.user.Email,this.user.FirstName,this.user.LastName)
         }
       })
     }
