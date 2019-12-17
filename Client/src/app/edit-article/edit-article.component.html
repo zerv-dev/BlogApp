@@ -1,5 +1,3 @@
-<p>create-article works!</p>
-
 <div class="form-container" *ngIf="article" >
   <mat-form-field>
     <input  [(ngModel)]="article.title" matInput placeholder="Title">
@@ -9,5 +7,4 @@
     <textarea matInput [(ngModel)]="article.content" placeholder="Content"></textarea>
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="submit()">Submit</button>
-  <mat-spinner></mat-spinner>
 </div>
