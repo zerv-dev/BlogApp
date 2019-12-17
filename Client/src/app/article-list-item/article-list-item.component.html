@@ -14,14 +14,9 @@
     </mat-card-header>
     <!-- <img mat-card-image src="./../../assets/img/default-image.jpg" alt="default-image" /> -->
     <!-- This will be a link to the article -->
-    <mat-card-content>
-        <p>
-            {{ article.content }}
-            <!--This will be a link to the article-->
-        </p>
-    </mat-card-content>
+
     <mat-card-actions>
         <!-- <button mat-button>LIKE</button> -->
-        <button mat-button>VIEW</button>
+        <button mat-button (click)="router.navigateByUrl('/article/'+article.id)" >VIEW</button>
     </mat-card-actions>
 </mat-card>

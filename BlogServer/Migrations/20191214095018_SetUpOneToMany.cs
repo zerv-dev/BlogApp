@@ -50,12 +50,6 @@ namespace BlogServer.Migrations
                 table: "Users",
                 newName: "email");
 
-            migrationBuilder.AddColumn<int>(
-                name: "AuthorId",
-                table: "Articles",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
         }
     }
 }
