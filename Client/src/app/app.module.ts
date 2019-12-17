@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 
 import { OktaAuthModule } from "@okta/okta-angular";
 import { ArticleComponent } from './article/article.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthService} from './services/auth.service';
 
 import{MatSliderModule} from '@angular/material/slider'
@@ -25,6 +25,7 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
 import { CreateArticleComponent } from './create-article/create-article.component';
 import {environment} from './../environments/environment';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const config = {
   issuer: 'https://dev-395608.okta.com/oauth2/default',
@@ -40,7 +41,8 @@ const config = {
     ArticleComponent,
     ArticleListItemComponent,
     CreateArticleComponent,
-    UserListItemComponent,    
+    UserListItemComponent,
+    ProfileComponent,    
   ],
 
 
@@ -49,7 +51,7 @@ const config = {
     AppRoutingModule,
     OktaAuthModule.initAuth(config),
     HttpClientModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
     MatSliderModule,
     MatCardModule,
     MatButtonModule,

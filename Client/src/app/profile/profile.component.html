@@ -1,0 +1,11 @@
+<p>profile works!</p>
+<div *ngIf=selectedUser>
+    <h1>
+        {{selectedUser.firstName}} {{selectedUser.lastName}}
+    </h1>
+
+    <h2>Articles</h2>
+    <div *ngFor="let article of selectedUser.articles" >
+        <app-article-list-item [article]=article ></app-article-list-item>
+    </div>
+</div>
