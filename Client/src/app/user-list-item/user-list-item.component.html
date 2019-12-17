@@ -1,6 +1,6 @@
-<mat-card  *ngIf="user">
+<mat-card class="user-list-item" *ngIf="user">
     <mat-card-header>
-        <mat-card-title   >  <a [routerLink]="[]">{{ user.firstName + user.lastName  }}</a></mat-card-title>
+        <mat-card-title   >  <span (click)="router.navigateByUrl('/profile/'+user.id)">{{ user.firstName + ' ' +user.lastName  }}</span></mat-card-title>
         <!--This will be a link to the user-->
         <!--This will be a link to the author -->
     </mat-card-header>

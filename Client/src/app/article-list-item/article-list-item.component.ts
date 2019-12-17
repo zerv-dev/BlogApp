@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 interface Article{
 	id:Number;
     title: String;
@@ -12,7 +13,7 @@ interface Article{
 })
 export class ArticleListItemComponent implements OnInit {
   @Input() article: Article ;
-  constructor() { }
+  constructor( public router:Router) { }
 
   ngOnInit() {
   }

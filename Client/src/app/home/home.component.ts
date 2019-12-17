@@ -3,6 +3,7 @@ import {HttpClient,HttpHeaders} from '@angular/common/http'
 import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from "./../../environments/environment";
 import {UserService} from './../services/user.service';
+import{User,Article} from './../interfaces'
 interface ArticleListing {
 	title: String;
 	author: String;
@@ -11,18 +12,18 @@ interface ArticleListing {
 	image:String
 }
 
-interface Article{
-	id:Number;
-    title: String;
-	authorId:Number;
-	content:String
-}
-interface User{
-	Email:string,
-	FirstName:string;
-	LastName:string
+// interface Article{
+// 	id:Number;
+//     title: String;
+// 	authorId:Number;
+// 	content:String
+// }
+// interface User{
+// 	Email:string,
+// 	FirstName:string;
+// 	LastName:string
   
-  }
+//   }
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',

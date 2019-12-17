@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using BlogServer.Data;
 using BlogServer.Models;
 using BlogServer.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace BlogServer.Controllers
 {
@@ -99,6 +101,7 @@ namespace BlogServer.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Article>> PostArticle(Article article)
         {
             _context.Articles.Add(article);

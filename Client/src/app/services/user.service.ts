@@ -3,13 +3,8 @@ import { OktaAuthService } from "@okta/okta-angular";
 import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import {environment} from '../../environments/environment'
+import { Profile,User } from "./../interfaces";
 
-interface User{
-  Email:string,
-  FirstName:string;
-  LastName:string
-
-}
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +21,9 @@ export class UserService {
   getAllUsers(){
     return this.http.get<User[]>(environment.apiUrl+'User/');
 
+  }
+  getProfile(UserId:number){
+    return this.http.get<Profile>(environment.apiUrl+'User/'+UserId+'/profile')
   }
 
 }

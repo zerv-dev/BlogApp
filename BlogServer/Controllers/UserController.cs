@@ -61,12 +61,25 @@ namespace BlogServer.Controllers
                 return NotFound();
             }
             var articles = await _context.Articles.Where(article=> article.UserId == id).ToListAsync();
+                        List<ArticleViewModel> articleViewModelList = new List<ArticleViewModel>();
+
+            articles.ForEach(( Article article) =>{
+                articleViewModelList.Add( new ArticleViewModel(){
+                        Id=article.Id,
+                        Title=article.Title,
+                        Content=article.Content,
+                        Author=user
+                    });
+            });
+            {
+                
+            }
             ProfileViewModel profile = new ProfileViewModel(){
                 UserId = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                Articles = articles
+                Articles = articleViewModelList
             };
 
             return profile;
