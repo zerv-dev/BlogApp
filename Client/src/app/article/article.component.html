@@ -1,6 +1,6 @@
 <div class="article-page" *ngIf=article>
         <h1>{{article.title}}</h1>
-        <i>By {{article.author.firstName + article.author.lastName}}</i>
+        <p (click)="router.navigateByUrl('/profile/'+article.author.id)" ><i>By {{article.author.firstName + ' '+ article.author.lastName}}</i></p>
 
         <p>{{article.content}}</p>
 

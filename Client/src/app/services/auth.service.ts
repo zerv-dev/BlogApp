@@ -3,13 +3,7 @@ import { OktaAuthService } from "@okta/okta-angular";
 import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import {environment} from '../../environments/environment'
-
-interface User{
-  Email:string,
-  FirstName:string;
-  LastName:string
-
-}
+import {User} from './../interfaces'
 @Injectable({
   providedIn: 'root'
 })

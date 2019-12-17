@@ -1,11 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-interface Article{
-	id:Number;
-    title: String;
-	author:any;
-	content:String
-}
+import {Article} from './../interfaces'
 @Component({
   selector: 'app-article-list-item',
   templateUrl: './article-list-item.component.html',

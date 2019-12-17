@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {  ActivatedRoute} from "@angular/router";
+import {  ActivatedRoute, Router} from "@angular/router";
 import {HttpClient } from "@angular/common/http";
 import { environment } from "./../../environments/environment";
-
-interface Article{
-	id:Number;
-  title: String;
-	author:any;
-	content:String
-}
+import {Article} from './../interfaces'
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -17,7 +11,7 @@ interface Article{
 
 export class ArticleComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http:HttpClient) { }
+  constructor(private route: ActivatedRoute, private http:HttpClient, public router:Router) { }
     id:number;
     article:Article;
     ngOnInit() {
