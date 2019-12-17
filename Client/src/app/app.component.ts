@@ -15,7 +15,7 @@ export class AppComponent  {
   isAuthenticated: boolean;
   userClaims:any
   user:any
-  constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService,private userService:UserService) {
+  constructor(public oktaAuth: OktaAuthService,private router: Router, private authService:AuthService,public userService:UserService) {
     // Subscribe to authentication state changes
     console.log(environment)
 this.isAuthenticated = false

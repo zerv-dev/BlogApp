@@ -4,7 +4,13 @@
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput [(ngModel)]="article.content" placeholder="Content"></textarea>
+    <textarea
+      matInput 
+      cdkTextareaAutosize 
+      cdkAutosizeMinRows="10"
+      [(ngModel)]="article.content"
+      placeholder="Content"
+    ></textarea>
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="submit()">Submit</button>
 </div>

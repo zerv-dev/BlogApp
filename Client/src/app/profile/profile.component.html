@@ -1,9 +1,9 @@
-<div *ngIf=selectedUser>
-    <h1>
+<div *ngIf=selectedUser class="profile-page">
+    <h1 style="text-align: center;" >
         {{selectedUser.firstName}} {{selectedUser.lastName}}
     </h1>
 
-    <h2>Articles</h2>
+    <h2 style="text-align: center;" >Articles</h2>
     <div *ngFor="let article of selectedUser.articles" >
         <app-article-list-item [article]=article ></app-article-list-item>
     </div>

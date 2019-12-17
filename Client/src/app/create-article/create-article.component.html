@@ -4,7 +4,12 @@
     <input  [(ngModel)]="title" matInput placeholder="Title">
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput [(ngModel)]="content" placeholder="Content"></textarea>
+    <textarea 
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="10"
+      matInput [(ngModel)]="content" 
+      placeholder="Content"
+    ></textarea>
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="submit()">Submit</button>
 </div>

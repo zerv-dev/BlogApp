@@ -2,4 +2,5 @@
   <button *ngIf="isAuthenticated" (click)="logout()"> Logout </button>
   <button routerLink="/create-article" >Create Article</button>
   <button routerLink="/" >Home</button>
+  <button *ngIf="userService.user" [routerLink]="['/profile',userService.user.id]">Profile</button>
   <router-outlet></router-outlet>
