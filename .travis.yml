@@ -1,11 +1,11 @@
 language: csharp
 mono: none
-dotnet: .0.0
+dotnet: 3.0
 
 install:
 - dotnet restore
 
 script:
- - dotnet build
- - dotnet test  - dotnet test Tests/Tests.csproj
+  - dotnet build
+  - dotnet test  - dotnet test Tests/Tests.csproj
 
