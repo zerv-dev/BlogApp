@@ -50,7 +50,7 @@ namespace BlogServer
             {
                 OktaDomain = "https://dev-395608.okta.com"
             });
-            // string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=comp586;Trusted_Connection=true;MultipleActiveResultSets = true";
+            // string connectionString = "Server=comp586.database.windows.net;Database=comp586;User=zane;Password=Black123;MultipleActiveResultSets = true";
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 
