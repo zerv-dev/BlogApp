@@ -21,9 +21,10 @@ namespace Tests
                 User user = new User(){
                     Email= "example@.email",
                     FirstName= "John",
-                    LastName="Doe"
+                    LastName="Doe",
+                    Id = 1
                 };
-                await userController.PostUser(user);
+                // await userController.PostUser(user);
                 Article article = new Article()
                 {
                     Title = "new article",

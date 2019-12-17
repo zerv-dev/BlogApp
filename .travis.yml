@@ -1,0 +1,6 @@
+language: csharp
+solution: BlogApp.sln
+# mono: latest
+script:  
+  - dotnet restore
+  - dotnet test
