@@ -7,5 +7,5 @@ install:
 
 script:
  - dotnet build
- - dotnet test  - dotnet test BlogApp/Tests/Tests.csproj
+ - dotnet test BlogApp/Tests/Tests.csproj
 
