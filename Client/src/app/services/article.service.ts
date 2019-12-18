@@ -12,7 +12,7 @@ export class ArticleService {
   constructor(public oktaAuth:OktaAuthService, private http: HttpClient) { }
   getAllArticles(){
     return this.http.get<Article[]>(
-			environment.apiUrl+ 'article/',)//.subscribe(result =>{this.articles = result})
+			environment.apiUrl+ 'article/',)
   }
 
   getArticleById(id:number){
@@ -23,7 +23,7 @@ export class ArticleService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
-   return this.http.post<Article>(environment.apiUrl+'article',{
+    return this.http.post<Article>(environment.apiUrl+'article',{
       "Title": title,
       "UserId": userId,
       "Content": content
@@ -34,7 +34,7 @@ export class ArticleService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
-   return this.http.put<Article>(environment.apiUrl+'article/'+ article.id,{
+    return this.http.put<Article>(environment.apiUrl+'article/'+ article.id,{
       "Title": article.title,
       "UserId": userId,
       "Content": article.content,
@@ -48,7 +48,7 @@ export class ArticleService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
-   return this.http.delete<Article>(environment.apiUrl+'article/'+ id,{headers})
+    return this.http.delete<Article>(environment.apiUrl+'article/'+ id,{headers})
   }
   
 

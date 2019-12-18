@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BlogServer.Data;
 using BlogServer.Models;
 using BlogServer.ViewModels;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace BlogServer.Controllers
@@ -86,7 +86,7 @@ namespace BlogServer.Controllers
 
             
         }
-
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
